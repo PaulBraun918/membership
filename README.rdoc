@@ -1,0 +1,34 @@
+=begin
+	
+	var locations = [];
+	<% var = [] %>
+	var first_char = 0;
+	$("input#profile_place").keyup(function() {		
+		first_char = $(this).val().split(" ").join("");
+		
+		if(first_char.length == 1) {
+			$.ajax({
+					url: '/cities/autocomplete/' + first_char, dataType: "json",
+					success : function(data){
+				       locations = data;
+				    }
+			});
+		} 
+		else {
+			alert(first_char);
+		}
+
+	});
+	
+=end
+
+
+		var first_char = $(this).val().split(" ").join("");
+		if(first_char.length == 1) {
+			$.ajax({
+					url: '/cities/autocomplete/' + first_char, dataType: "json",
+					success : function(data){
+				       locations = data;
+				    }
+			});
+		}	
